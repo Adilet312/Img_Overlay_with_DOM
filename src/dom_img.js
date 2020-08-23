@@ -5,13 +5,13 @@ import jeans from './assets/main.jpeg';
   let image = document.createElement('img');
       image.setAttribute('src',`${coffee}`);
       image.className = "imgClass";
-      image.style.width = "20em";
-      image.style.height = "20em";
       document.body.appendChild(image);
 }
 displayImg();
 
-function displayOverlay(e){
+function displayOverlay(){
+
+    /*Overlay*/
     let overlay =  document.createElement('div');
     overlay.className = "overlayClass";
     overlay.style.position = "absolute";
@@ -20,26 +20,38 @@ function displayOverlay(e){
     overlay.style.background = 'rgba(0,0,0,0.7)';
     overlay.style.width = window.innerWidth + "px";
     overlay.style.height = window.innerHeight + "px";
-    /*Img frame*/
+    /*Close icon*/
+    let x = document.createElement('span');
+    x.className = "close";
+    x.innerText = "X";
+    document.body.appendChild(x);
+    document.body.appendChild(overlay);
+
+    /*Figure and Large Img*/
     let figure = document.createElement('figure');
     let enlargeImg = document.createElement('img');
     enlargeImg.className = "bigImgClass";
     enlargeImg.src = `${jeans}`;
     figure.appendChild(enlargeImg);
+    document.body.appendChild(figure);
 
+    /*Original Img to remove*/
     let originalImg = document.querySelector('.imgClass');
     originalImg.parentNode.removeChild(originalImg);
-    document.body.appendChild(figure);
-    document.body.appendChild(overlay);
-    /*Remove overlay when it is clicked*/
-    if(overlay){
-      let ol = e.target.nextElementSibling;
-      ol.addEventListener('click',function(){
-        ol.parentNode.removeChild(ol);
-      },false)
-    /**/
 
-    }
+    /*Remove overlay when it is clicked*/
+    document.querySelector('.overlayClass').addEventListener('click',function(e){
+      let overlay_element = e.target.parentNode;
+      if(overlay_element){
+        overlay_element.parentNode.removeChild(overlay_element);
+      }
+    },false);
+    document.querySelector('.close').addEventListener('click',function(e){
+      let overlay_element = e.target.parentNode;
+      if(overlay_element){
+        overlay_element.parentNode.removeChild(overlay_element);
+      }
+    },false);
 
 
 }
