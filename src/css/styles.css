@@ -4,10 +4,7 @@ body{
   align-items: center;
   justify-content: space-around;
 }
-.imgClass{
-  width:20em;
-  height:20em;
-}
+
 figure{
   display: flex;
   flex-direction: column;
@@ -18,6 +15,7 @@ figure{
   z-index: 1;
   margin:0px;
   top:5em;
+  border: 15px solid #fff;
 }
 .close{
   position: absolute;
@@ -27,4 +25,21 @@ figure{
   font-size: 30px;
   z-index: 1;
 
+}
+/*Original pictures*/
+.pictures{
+  display: grid;
+  grid-template-columns: repeat(2,200px);
+  grid-template-rows: 200px 200px;
+  list-style: none;
+  grid-gap: 5px;
+}
+.picture1{ grid-column: 1/2; grid-row: 1/2;}
+.picture2{ grid-column: 2/3; grid-row: 1/2;}
+.picture3{ grid-column: 1/2; grid-row: 2/3;}
+.picture4{ grid-column: 2/3; grid-row: 2/3;}
+.pictures li img {
+  width: 200px;
+  height: 200px;
+  object-fit:cover;
 }
